@@ -193,12 +193,12 @@ public class HumanNameParserParser {
           throw new ParseException("Couldn't find a last name in '{" + this.name.getStr() + "}'.");
         }
         
-        // get the first initial, if there is one
-        this.leadingInit = this.name.chopWithRegex(leadingInitRegex, 1);
-        
         // get salutation, if there is one
         this.salutation = this.name.chopWithRegex(salutationsRegex, 1);
         
+        // get the first initial, if there is one
+        this.leadingInit = this.name.chopWithRegex(leadingInitRegex, 1);
+               
         // get the first name
         this.first = this.name.chopWithRegex(firstRegex, 0);
         if (StringUtils.isBlank(this.first)) {

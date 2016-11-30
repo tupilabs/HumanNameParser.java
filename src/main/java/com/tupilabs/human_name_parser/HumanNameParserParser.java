@@ -51,6 +51,7 @@ public class HumanNameParserParser {
 
     private List<String> suffixes;
     private List<String> prefixes;
+    private List<String> salutations;
 
     /**
      * Creates a parser given a string name.
@@ -76,8 +77,10 @@ public class HumanNameParserParser {
         this.last = "";
         this.suffix = "";
 
+        this.salutations = Arrays.asList(new String[] {"mr", "master", "mister", 
+        		"mrs", "miss", "ms", "dr", "prof", "rev", "fr", "judge", "honorable", "hon" });        
         this.suffixes = Arrays.asList(new String[] { "esq", "esquire", "jr",
-            "sr", "2", "ii", "iii", "iv" });
+            "sr", "2", "ii", "iii", "iv", "phd", "apr", "rph", "pe", "md", "ma", "dmd", "cme" });
         this.prefixes = Arrays
             .asList(new String[] { "bar", "ben", "bin", "da", "dal",
                 "de la", "de", "del", "der", "di", "ibn", "la", "le",
@@ -140,7 +143,7 @@ public class HumanNameParserParser {
         // but you can select a particular parenthesized submatch to be returned.
         // Also, note that each regex requres that the preceding ones have been run, and matches chopped out.
         String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
-        String suffixRegex = "(?i),* *((\\s"+suffixes+")$)";
+        String suffixRegex = "(?i),* +(("+suffixes+")$)";
         String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
         String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
         String firstRegex = "(?i)^([^ ]+)";

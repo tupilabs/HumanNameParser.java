@@ -49,11 +49,13 @@ public class HumanNameParserParser {
     private String last;
     private String suffix;
     private String salutation;
-
+    private String postnominal;
+    
     private List<String> suffixes;
     private List<String> salutations;
     private List<String> prefixes;
-
+    private List<String> postnominals;
+    
     /**
      * Creates a parser given a string name.
      *
@@ -78,13 +80,16 @@ public class HumanNameParserParser {
         this.last = "";
         this.suffix = "";
         this.salutation = "";
+        this.postnominal = "";
 
         this.salutations = Arrays.asList(new String[] {"mr", "master", "mister", 
         		"mrs", "miss", "ms", "dr", "prof", "rev", "fr", "judge", "honorable", "hon" });        
-        this.suffixes = Arrays.asList(new String[] { "esq", "esquire", "jr",
-            "sr", "2", "ii", "iii", "iv", "phd", "ph.d.", "ph.d", "apr", "rph", "pe", "md", "ma", "dmd", "cme" });
-        this.prefixes = Arrays
-            .asList(new String[] { "bar", "ben", "bin", "da", "dal",
+        this.suffixes = Arrays.asList(new String[] { "jr", "sr", "2", "ii", 
+        		"iii", "iv", "v", "senior", "junior" });
+        this.postnominals = Arrays.asList(new String[] { "phd", "ph.d.", "ph.d", 
+        		"esq", "esquire", "apr", "rph", "pe", "md", "ma", "dmd", "cme", 
+        		"dds", "cpa", "dvm" });        
+        this.prefixes = Arrays.asList(new String[] { "bar", "ben", "bin", "da", "dal",
                 "de la", "de", "del", "der", "di", "ibn", "la", "le",
                 "san", "st", "ste", "van", "van der", "van den", "vel",
                 "von" });
@@ -124,12 +129,20 @@ public class HumanNameParserParser {
         return suffix;
     }
 
+    public String getPostnominal() {
+        return postnominal;
+    }
+    
     public String getSalutation() {
         return salutation;
     }
     
     public List<String> getSuffixes() {
         return suffixes;
+    }
+    
+    public List<String> getPostnominals() {
+        return postnominals;
     }
     
     public List<String> getSalutations() {
@@ -147,6 +160,7 @@ public class HumanNameParserParser {
      */
     private void parse() throws ParseException {
         String suffixes = StringUtils.join(this.suffixes, "\\.*|") + "\\.*";
+        String postnominals = StringUtils.join(this.postnominals, "\\.*|") + "\\.*";
         String salutations = StringUtils.join(this.salutations, "\\.*|") + "\\.*";
         String prefixes = StringUtils.join(this.prefixes, " |") + " ";
         
@@ -155,6 +169,7 @@ public class HumanNameParserParser {
         // Also, note that each regex requires that the preceding ones have been run, and matches chopped out.
         String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
         String suffixRegex = "(?i),* +(("+suffixes+")$)";
+        String postnominalRegex = "(?i),* +(("+postnominals+")$)";
         String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
         String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
         String salutationsRegex = "(?i)^("+salutations+"\\b)(\\.|\\s)+"; //salutation plus a word boundary \b
@@ -165,6 +180,9 @@ public class HumanNameParserParser {
         
         // get suffix, if there is one
         this.suffix = this.name.chopWithRegex(suffixRegex, 1);
+        
+        // get postnominal, if there is one
+        this.postnominal = this.name.chopWithRegex(postnominalRegex, 1);
         
         // flip the before-comma and after-comma parts of the name
         this.name.flip(",");

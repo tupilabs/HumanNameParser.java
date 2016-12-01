@@ -169,7 +169,7 @@ public class HumanNameParserParser {
         // Also, note that each regex requires that the preceding ones have been run, and matches chopped out.
         String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
         String suffixRegex = "(?i)[,| ]+(("+suffixes+")$)";
-        String postnominalRegex = "(?i),* +(("+postnominals+")$)";
+        String postnominalRegex = "(?i)[,| ]+(("+postnominals+")$)";
         String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
         String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
         String salutationsRegex = "(?i)^("+salutations+"\\b)(\\.|\\s)+"; //salutation plus a word boundary \b
@@ -178,12 +178,12 @@ public class HumanNameParserParser {
         // get nickname, if there is one
         this.nicknames = this.name.chopWithRegex(nicknamesRegex, 2);
         
-        // get suffix, if there is one
-        this.suffix = this.name.chopWithRegex(suffixRegex, 1);
-        
         // get postnominal, if there is one
         this.postnominal = this.name.chopWithRegex(postnominalRegex, 1);
         
+        // get suffix, if there is one
+        this.suffix = this.name.chopWithRegex(suffixRegex, 1);
+      
         // flip the before-comma and after-comma parts of the name
         this.name.flip(",");
         

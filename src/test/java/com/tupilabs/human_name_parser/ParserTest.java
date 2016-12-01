@@ -63,7 +63,7 @@ public class ParserTest {
                 }
                 
                 String[] tokens = line.split("\\|");
-                if (tokens.length != 7) {
+                if (tokens.length != 9) {
                     LOGGER.warning(String.format("Invalid line in testNames.txt: %s", line));
                     continue;
                 }
@@ -92,6 +92,8 @@ public class ParserTest {
         String middle = tokens[4].trim();
         String last = tokens[5].trim();
         String suffix = tokens[6].trim();
+        String salutation = tokens[7].trim();
+        String postnominal = tokens[8].trim();
         
         HumanNameParserParser parser = new HumanNameParserParser(name);
         
@@ -101,6 +103,8 @@ public class ParserTest {
         assertEquals(middle, parser.getMiddle());
         assertEquals(last, parser.getLast());
         assertEquals(suffix, parser.getSuffix());
+        assertEquals(salutation, parser.getSalutation());
+        assertEquals(postnominal, parser.getPostnominal());
     }
     
 }

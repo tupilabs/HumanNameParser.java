@@ -48,9 +48,13 @@ public class HumanNameParserParser {
     private String middle;
     private String last;
     private String suffix;
+    private String salutation;
+    private String postnominal;
 
     private List<String> suffixes;
+    private List<String> salutations;
     private List<String> prefixes;
+    private List<String> postnominals;
 
     /**
      * Creates a parser given a string name.
@@ -75,11 +79,17 @@ public class HumanNameParserParser {
         this.middle = "";
         this.last = "";
         this.suffix = "";
+        this.salutation = "";
+        this.postnominal = "";
 
-        this.suffixes = Arrays.asList(new String[] { "esq", "esquire", "jr",
-            "sr", "2", "ii", "iii", "iv" });
-        this.prefixes = Arrays
-            .asList(new String[] { "bar", "ben", "bin", "da", "dal",
+        this.salutations = Arrays.asList(new String[] {"mr", "master", "mister", 
+        		"mrs", "miss", "ms", "dr", "prof", "rev", "fr", "judge", "honorable", "hon" });        
+        this.suffixes = Arrays.asList(new String[] { "jr", "sr", "2", "ii", 
+        		"iii", "iv", "v", "senior", "junior" });
+        this.postnominals = Arrays.asList(new String[] { "phd", "ph.d.", "ph.d", 
+        		"esq", "esquire", "apr", "rph", "pe", "md", "ma", "dmd", "cme", 
+        		"dds", "cpa", "dvm" });        
+        this.prefixes = Arrays.asList(new String[] { "bar", "ben", "bin", "da", "dal",
                 "de la", "de", "del", "der", "di", "ibn", "la", "le",
                 "san", "st", "ste", "van", "van der", "van den", "vel",
                 "von" });
@@ -119,8 +129,24 @@ public class HumanNameParserParser {
         return suffix;
     }
 
+    public String getPostnominal() {
+        return postnominal;
+    }
+
+    public String getSalutation() {
+        return salutation;
+    }
+
     public List<String> getSuffixes() {
         return suffixes;
+    }
+
+    public List<String> getPostnominals() {
+        return postnominals;
+    }
+
+    public List<String> getSalutations() {
+        return salutations;
     }
 
     public List<String> getPrefixes() {
@@ -134,41 +160,51 @@ public class HumanNameParserParser {
      */
     private void parse() throws ParseException {
         String suffixes = StringUtils.join(this.suffixes, "\\.*|") + "\\.*";
+        String postnominals = StringUtils.join(this.postnominals, "\\.*|") + "\\.*";
+        String salutations = StringUtils.join(this.salutations, "\\.*|") + "\\.*";
         String prefixes = StringUtils.join(this.prefixes, " |") + " ";
-        
+
         // The regex use is a bit tricky.  *Everything* matched by the regex will be replaced,
         // but you can select a particular parenthesized submatch to be returned.
-        // Also, note that each regex requres that the preceding ones have been run, and matches chopped out.
+        // Also, note that each regex requires that the preceding ones have been run, and matches chopped out.
         String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
-        String suffixRegex = "(?i),* *(("+suffixes+")$)";
+        String suffixRegex = "(?i)[,| ]+(("+suffixes+")$)";
+        String postnominalRegex = "(?i)[,| ]+(("+postnominals+")$)";
         String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
         String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
+        String salutationsRegex = "(?i)^("+salutations+"\\b)(\\.|\\s)+"; //salutation plus a word boundary \b
         String firstRegex = "(?i)^([^ ]+)";
-        
+
         // get nickname, if there is one
         this.nicknames = this.name.chopWithRegex(nicknamesRegex, 2);
-        
+
+        // get postnominal, if there is one
+        this.postnominal = this.name.chopWithRegex(postnominalRegex, 1);
+
         // get suffix, if there is one
         this.suffix = this.name.chopWithRegex(suffixRegex, 1);
-        
+
         // flip the before-comma and after-comma parts of the name
         this.name.flip(",");
-        
+
         // get the last name
         this.last = this.name.chopWithRegex(lastRegex, 0);
         if (StringUtils.isBlank(this.last)) {
           throw new ParseException("Couldn't find a last name in '{" + this.name.getStr() + "}'.");
         }
-        
+
+        // get salutation, if there is one
+        this.salutation = this.name.chopWithRegex(salutationsRegex, 1);
+
         // get the first initial, if there is one
         this.leadingInit = this.name.chopWithRegex(leadingInitRegex, 1);
-        
+
         // get the first name
         this.first = this.name.chopWithRegex(firstRegex, 0);
         if (StringUtils.isBlank(this.first)) {
             throw new ParseException("Couldn't find a first name in '{" + this.name.getStr() + "}'");
         }
-        
+
         // if anything's left, that's the middle name
         this.middle = this.name.getStr();
     }

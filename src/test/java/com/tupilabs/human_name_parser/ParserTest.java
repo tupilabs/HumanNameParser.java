@@ -36,38 +36,38 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ParserTest {
-    
+
     private static final Logger LOGGER = Logger.getLogger(ParserTest.class.getName());
 
     private static File testNames = null;
-    
+
     @BeforeClass
     public static void setUp() {
         testNames = new File(ParserTest.class.getResource("/testNames.txt").getFile());
     }
-    
+
     @Test
     public void testAll() throws IOException {
         BufferedReader buffer = null;
         FileReader reader = null;
-        
+
         try {
             reader = new FileReader(testNames);
             buffer = new BufferedReader(reader);
-            
+
             String line = null;
             while ((line = buffer.readLine()) != null) {
                 if (StringUtils.isBlank(line)) {
                     LOGGER.warning("Empty line in testNames.txt");
                     continue;
                 }
-                
+
                 String[] tokens = line.split("\\|");
                 if (tokens.length != 9) {
                     LOGGER.warning(String.format("Invalid line in testNames.txt: %s", line));
                     continue;
                 }
-                
+
                 validateLine(tokens);
             }
         } finally {
@@ -85,7 +85,7 @@ public class ParserTest {
      */
     private void validateLine(String[] tokens) {
         String name = tokens[0].trim();
-        
+
         String leadingInit = tokens[1].trim();
         String first = tokens[2].trim();
         String nickname = tokens[3].trim();
@@ -94,9 +94,9 @@ public class ParserTest {
         String suffix = tokens[6].trim();
         String salutation = tokens[7].trim();
         String postnominal = tokens[8].trim();
-        
+
         HumanNameParserParser parser = new HumanNameParserParser(name);
-        
+
         assertEquals(leadingInit, parser.getLeadingInit());
         assertEquals(first, parser.getFirst());
         assertEquals(nickname, parser.getNicknames());
@@ -106,5 +106,5 @@ public class ParserTest {
         assertEquals(salutation, parser.getSalutation());
         assertEquals(postnominal, parser.getPostnominal());
     }
-    
+
 }

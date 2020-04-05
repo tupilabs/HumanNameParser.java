@@ -91,6 +91,7 @@
 	</distributionManagement>
 
 	<build>
+        <defaultGoal>clean test install</defaultGoal>
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.scm</groupId>

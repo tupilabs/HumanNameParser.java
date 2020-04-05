@@ -1,5 +1,7 @@
 # HumanNameParse.java
 
+![](https://github.com/tupilabs/HumanNameParser.java/workflows/CI/badge.svg)
+
 Java port Author: Bruno P. Kinoshita
 
 Original library Author: Jason Priem jason@jasonpriem.com (credits go to him)

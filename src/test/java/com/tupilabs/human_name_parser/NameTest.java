@@ -40,39 +40,39 @@ public class NameTest {
 
     @Before
     public void setUp() {
-        object = new Name("BjÃ¶rn O'Malley");
+        object = new Name("Björn O'Malley");
     }
 
     @Test
     public void testSetStrRemovesWhitespaceAtEnds() {
-        object.setStr("    BjÃ¶rn O'Malley \r\n");
+        object.setStr("    Björn O'Malley \r\n");
         assertEquals(
-            "BjÃ¶rn O'Malley",
+            "Björn O'Malley",
             object.getStr()
         );
     }
 
     @Test
     public void testSetStrRemovesRedudentantWhitespace(){
-        object.setStr(" BjÃ¶rn    O'Malley");
+        object.setStr(" Björn    O'Malley");
         assertEquals(
-            "BjÃ¶rn O'Malley",
+            "Björn O'Malley",
             object.getStr()
         );
     }
 
     @Test
     public void testChopWithRegexReturnsChoppedSubstring(){
-        object.setStr("BjÃ¶rn O'Malley");
+        object.setStr("Björn O'Malley");
         assertEquals(
-            "BjÃ¶rn",
+            "Björn",
             object.chopWithRegex("(^([^ ]+))(.+)", 1)
         );
     }
 
     @Test
     public void testChopWithRegexChopsStartOffNameStr(){
-        object.setStr("BjÃ¶rn O'Malley");
+        object.setStr("Björn O'Malley");
         object.chopWithRegex("(^[^ ]+)", 0);
         assertEquals(
                 "O'Malley",
@@ -82,30 +82,30 @@ public class NameTest {
 
     @Test
     public void testChopWithRegexChopsEndOffNameStr(){
-        object.setStr("BjÃ¶rn O'Malley");
+        object.setStr("Björn O'Malley");
         object.chopWithRegex("( (.+)$)", 1);
         assertEquals(
-            "BjÃ¶rn",
+            "Björn",
             object.getStr()
         );
     }
 
     @Test
     public void testChopWithRegexChopsMiddleFromNameStr(){
-        object.setStr("BjÃ¶rn 'Bill' O'Malley");
+        object.setStr("Björn 'Bill' O'Malley");
         object.chopWithRegex("( '[^']+' )", 0);
         assertEquals(
-            "BjÃ¶rn O'Malley",
+            "Björn O'Malley",
             object.getStr()
         );
     }
 
     @Test
     public void testFlip() {
-        object.setStr("O'Malley, BjÃ¶rn");
+        object.setStr("O'Malley, Björn");
         object.flip(",");
         assertEquals(
-            "BjÃ¶rn O'Malley",
+            "Björn O'Malley",
             object.getStr()
         );
     }

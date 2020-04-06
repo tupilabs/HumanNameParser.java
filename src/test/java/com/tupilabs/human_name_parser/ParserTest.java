@@ -51,7 +51,7 @@ public class ParserTest {
 
         try (FileReader reader = new FileReader(testNames); BufferedReader buffer = new BufferedReader(reader)) {
 
-            String line = null;
+            String line;
             while ((line = buffer.readLine()) != null) {
                 if (StringUtils.isBlank(line)) {
                     LOGGER.warning("Empty line in testNames.txt");

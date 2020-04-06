@@ -82,17 +82,17 @@ public class HumanNameParserParser {
         this.salutation = "";
         this.postnominal = "";
 
-        this.salutations = Arrays.asList(new String[] {"mr", "master", "mister", 
-        		"mrs", "miss", "ms", "dr", "prof", "rev", "fr", "judge", "honorable", "hon" });        
-        this.suffixes = Arrays.asList(new String[] { "jr", "sr", "2", "ii", 
-        		"iii", "iv", "v", "senior", "junior" });
-        this.postnominals = Arrays.asList(new String[] { "phd", "ph.d.", "ph.d", 
-        		"esq", "esquire", "apr", "rph", "pe", "md", "ma", "dmd", "cme", 
-        		"dds", "cpa", "dvm" });        
-        this.prefixes = Arrays.asList(new String[] { "bar", "ben", "bin", "da", "dal",
+        this.salutations = Arrays.asList("mr", "master", "mister",
+                "mrs", "miss", "ms", "dr", "prof", "rev", "fr", "judge", "honorable", "hon");
+        this.suffixes = Arrays.asList("jr", "sr", "2", "ii",
+                "iii", "iv", "v", "senior", "junior");
+        this.postnominals = Arrays.asList("phd", "ph.d.", "ph.d",
+                "esq", "esquire", "apr", "rph", "pe", "md", "ma", "dmd", "cme",
+                "dds", "cpa", "dvm");
+        this.prefixes = Arrays.asList("bar", "ben", "bin", "da", "dal",
                 "de la", "de", "del", "der", "di", "ibn", "la", "le",
                 "san", "st", "ste", "van", "van der", "van den", "vel",
-                "von" });
+                "von");
 
         this.parse();
     }

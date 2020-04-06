@@ -42,7 +42,7 @@ public class ParseException extends RuntimeException {
     }
 
     /**
-     * Contructor with message.
+     * Constructor with message.
      * @param message message
      */
     public ParseException(String message) {

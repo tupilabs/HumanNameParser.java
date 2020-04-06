@@ -48,12 +48,8 @@ public class ParserTest {
 
     @Test
     public void testAll() throws IOException {
-        BufferedReader buffer = null;
-        FileReader reader = null;
 
-        try {
-            reader = new FileReader(testNames);
-            buffer = new BufferedReader(reader);
+        try (FileReader reader = new FileReader(testNames); BufferedReader buffer = new BufferedReader(reader)) {
 
             String line = null;
             while ((line = buffer.readLine()) != null) {
@@ -70,11 +66,6 @@ public class ParserTest {
 
                 validateLine(tokens);
             }
-        } finally {
-            if (reader != null)
-                reader.close();
-            if (buffer != null)
-                buffer.close();
         }
     }
 

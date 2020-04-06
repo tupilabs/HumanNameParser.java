@@ -49,3 +49,9 @@ String firstName = parser.getFirst();
 String nicknames = parser.getNicknames();
 // ...
 ```
+
+## Changelog
+
+### 0.1 (2020-04-06)
+
+Initial release to Maven Central

@@ -15,6 +15,7 @@ Takes human names of arbitrary complexity and various wacky formats like:
 * J. Walter Weatherman 
 * de la Cruz, Ana M. 
 * James C. ('Jimmy') O'Dell, Jr.
+* Dr. Omar A.
 
 and parses out the:
 
@@ -24,6 +25,8 @@ and parses out the:
 * middle names
 * last name (including compound ones like "van der Sar' and "Ortega y Gasset"), and
 * suffix (like 'Jr.', 'III')
+* salutations (like 'Mr.', 'Mrs.', 'Dr')
+* postnominals (like 'PHD', 'CPA')
 
 ## Usage
 

@@ -41,7 +41,7 @@ import org.apache.commons.lang.StringUtils;
  */
 public class HumanNameParserParser {
 
-    private Name name;
+    private final Name name;
     private String leadingInit;
     private String first;
     private String nicknames;
@@ -51,10 +51,10 @@ public class HumanNameParserParser {
     private String salutation;
     private String postnominal;
 
-    private List<String> suffixes;
-    private List<String> salutations;
-    private List<String> prefixes;
-    private List<String> postnominals;
+    private final List<String> suffixes;
+    private final List<String> salutations;
+    private final List<String> prefixes;
+    private final List<String> postnominals;
 
     /**
      * Creates a parser given a string name.

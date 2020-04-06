@@ -2,6 +2,7 @@
 
 ![](https://github.com/tupilabs/HumanNameParser.java/workflows/CI/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tupilabs_HumanNameParser.java&metric=alert_status)](https://sonarcloud.io/dashboard?id=tupilabs_HumanNameParser.java)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=tupilabs_HumanNameParser.java&metric=coverage)](https://sonarcloud.io/dashboard?id=tupilabs_HumanNameParser.java)
 
 Java port Author: Bruno P. Kinoshita
 

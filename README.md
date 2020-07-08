@@ -53,7 +53,7 @@ String nicknames = parser.getNicknames();
 
 ## Changelog
 
-### 0.2 (2020-07-??)
+### 0.2 (2020-07-09)
 
 - [#10](https://github.com/tupilabs/HumanNameParser.java/issues/10) support custom
 postnominals. We have added a builder to create a parser. It uses the same default

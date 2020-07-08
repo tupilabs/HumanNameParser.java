@@ -29,7 +29,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * A builder to construct {@code HumanNameParserParser}.
  * @since 0.2
+ * @see HumanNameParserParser
  */
 public final class HumanNameParserBuilder {
 

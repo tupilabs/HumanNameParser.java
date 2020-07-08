@@ -43,14 +43,22 @@ and parses out the:
 ```
 
 ```
-Name object = new Name("SÃ©rgio Vieira de Mello");
-HumanNameParserParser parser = new HumanNameParserParser(object);
+Name name = new Name("Sérgio Vieira de Mello");
+HumanNameParserBuilder builder = new HumanNameParserBuilder(name);
+HumanNameParserParser parser = builder.build();
 String firstName = parser.getFirst();
 String nicknames = parser.getNicknames();
 // ...
 ```
 
 ## Changelog
+
+### 0.2 (2020-07-??)
+
+- [#10](https://github.com/tupilabs/HumanNameParser.java/issues/10) support custom
+postnominals. We have added a builder to create a parser. It uses the same default
+values as before for suffixes, postnominals, prefixes, and salutations. But now
+users can tell the builder to replace or append values to these lists.
 
 ### 0.1 (2020-04-06)
 

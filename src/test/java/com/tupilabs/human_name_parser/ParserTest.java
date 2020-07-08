@@ -86,7 +86,8 @@ public class ParserTest {
         String salutation = tokens[7].trim();
         String postnominal = tokens[8].trim();
 
-        HumanNameParserParser parser = new HumanNameParserParser(name);
+        HumanNameParserBuilder builder = new HumanNameParserBuilder(name);
+        HumanNameParserParser parser = builder.build();
 
         assertEquals(leadingInit, parser.getLeadingInit());
         assertEquals(first, parser.getFirst());

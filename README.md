@@ -43,8 +43,9 @@ and parses out the:
 ```
 
 ```
-Name object = new Name("Sérgio Vieira de Mello");
-HumanNameParserParser parser = new HumanNameParserParser(object);
+Name name = new Name("Sérgio Vieira de Mello");
+HumanNameParserBuilder builder = new HumanNameParserBuilder(name);
+HumanNameParserParser parser = builder.build();
 String firstName = parser.getFirst();
 String nicknames = parser.getNicknames();
 // ...

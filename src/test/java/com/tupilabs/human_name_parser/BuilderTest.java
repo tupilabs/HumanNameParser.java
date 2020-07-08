@@ -42,7 +42,7 @@ public class BuilderTest {
 
     @Test
     public void testDefaultSuffixes() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.build();
         assertTrue(parser.suffixes.contains("senior"));
         assertFalse(parser.suffixes.contains("mage"));
@@ -50,7 +50,7 @@ public class BuilderTest {
 
     @Test
     public void testReplacingSuffixes() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withSuffixes(Arrays.asList("mage")).build();
         assertFalse(parser.suffixes.contains("senior"));
         assertTrue(parser.suffixes.contains("mage"));
@@ -58,7 +58,7 @@ public class BuilderTest {
 
     @Test
     public void testExtraSuffixes() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withExtraSuffixes(Arrays.asList("mage")).build();
         assertTrue(parser.suffixes.contains("senior"));
         assertTrue(parser.suffixes.contains("mage"));
@@ -68,14 +68,14 @@ public class BuilderTest {
 
     @Test
     public void testDefaultPrefixes() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.build();
         assertTrue(parser.prefixes.contains("de la"));
     }
 
     @Test
     public void testReplacingPrefixes() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withPrefixes(Arrays.asList("sama")).build();
         assertFalse(parser.prefixes.contains("de la"));
         assertTrue(parser.prefixes.contains("sama"));
@@ -83,7 +83,7 @@ public class BuilderTest {
 
     @Test
     public void testExtraPrefixes() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withExtraPrefixes(Arrays.asList("sama")).build();
         assertTrue(parser.prefixes.contains("de la"));
         assertTrue(parser.prefixes.contains("sama"));
@@ -93,14 +93,14 @@ public class BuilderTest {
 
     @Test
     public void testDefaultPostnominals() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.build();
         assertTrue(parser.postnominals.contains("phd"));
     }
 
     @Test
     public void testReplacingPostnominals() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         // Au.D. is one of the examples from issue #10 on GitHub
         HumanNameParserParser parser = builder.withPostnominals(Arrays.asList("Au.D.")).build();
         assertFalse(parser.postnominals.contains("phd"));
@@ -109,7 +109,7 @@ public class BuilderTest {
 
     @Test
     public void testExtraPostnominals() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withExtraPostnominals(Arrays.asList("Au.D.")).build();
         assertTrue(parser.postnominals.contains("phd"));
         assertTrue(parser.postnominals.contains("Au.D."));
@@ -119,14 +119,14 @@ public class BuilderTest {
 
     @Test
     public void testDefaultSalutations() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.build();
         assertTrue(parser.salutations.contains("judge"));
     }
 
     @Test
     public void testReplacingSalutations() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withSalutations(Arrays.asList("sinho")).build();
         assertFalse(parser.salutations.contains("judge"));
         assertTrue(parser.salutations.contains("sinho"));
@@ -134,7 +134,7 @@ public class BuilderTest {
 
     @Test
     public void testExtraSalutations() {
-        HumanNameParserBuilder builder = new HumanNameParserBuilder("john");
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         HumanNameParserParser parser = builder.withExtraSalutations(Arrays.asList("sinho")).build();
         assertTrue(parser.salutations.contains("judge"));
         assertTrue(parser.salutations.contains("sinho"));
@@ -154,42 +154,42 @@ public class BuilderTest {
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullSalutations1() {
-        new HumanNameParserBuilder("john").withSalutations(null).build();
+        new HumanNameParserBuilder("john paul").withSalutations(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullSalutations2() {
-        new HumanNameParserBuilder("john").withExtraSalutations(null).build();
+        new HumanNameParserBuilder("john paul").withExtraSalutations(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullPostnominals1() {
-        new HumanNameParserBuilder("john").withPostnominals(null).build();
+        new HumanNameParserBuilder("john paul").withPostnominals(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullPostnominals2() {
-        new HumanNameParserBuilder("john").withExtraPostnominals(null).build();
+        new HumanNameParserBuilder("john paul").withExtraPostnominals(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullSuffixes1() {
-        new HumanNameParserBuilder("john").withSuffixes(null).build();
+        new HumanNameParserBuilder("john paul").withSuffixes(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullSuffixes2() {
-        new HumanNameParserBuilder("john").withExtraSuffixes(null).build();
+        new HumanNameParserBuilder("john paul").withExtraSuffixes(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullPrefixes1() {
-        new HumanNameParserBuilder("john").withPrefixes(null).build();
+        new HumanNameParserBuilder("john paul").withPrefixes(null).build();
     }
 
     @Test(expected = NullPointerException.class)
     public void testFailsToBuildWithNullPrefixes2() {
-        new HumanNameParserBuilder("john").withExtraPrefixes(null).build();
+        new HumanNameParserBuilder("john paul").withExtraPrefixes(null).build();
     }
 
     @Test

@@ -52,10 +52,10 @@ public class HumanNameParserParser {
     private final Name name;
 
     // other helpful values
-    private List<String> salutations;
-    private List<String> postnominals;
-    private List<String> prefixes;
-    private List<String> suffixes;
+    List<String> salutations;
+    List<String> postnominals;
+    List<String> prefixes;
+    List<String> suffixes;
 
     // parsed values
     private String leadingInit;

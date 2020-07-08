@@ -23,6 +23,7 @@
  */
 package com.tupilabs.human_name_parser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -147,13 +148,15 @@ public final class HumanNameParserBuilder {
         if (this.suffixes == null) {
             this.suffixes = DEFAULT_SUFFIXES;
         }
-        return new HumanNameParserParser(
+        final HumanNameParserParser parser = new HumanNameParserParser(
             name,
             salutations,
             postnominals,
             prefixes,
             suffixes
         );
+        parser.parse();
+        return parser;
     }
 
     // salutations
@@ -166,8 +169,8 @@ public final class HumanNameParserBuilder {
 
     public HumanNameParserBuilder withExtraSalutations(List<String> salutations) {
         Objects.requireNonNull(salutations);
-        this.salutations = DEFAULT_SALUTATIONS;
-        this.salutations.addAll(salutations);
+        this.salutations = new ArrayList<>(salutations);
+        this.salutations.addAll(DEFAULT_SALUTATIONS);
         return this;
     }
 
@@ -181,8 +184,8 @@ public final class HumanNameParserBuilder {
 
     public HumanNameParserBuilder withExtraPostnominals(List<String> postnominals) {
         Objects.requireNonNull(postnominals);
-        this.postnominals = DEFAULT_POSTNOMINALS;
-        this.postnominals.addAll(postnominals);
+        this.postnominals = new ArrayList<>(postnominals);
+        this.postnominals.addAll(DEFAULT_POSTNOMINALS);
         return this;
     }
 
@@ -196,8 +199,8 @@ public final class HumanNameParserBuilder {
 
     public HumanNameParserBuilder withExtraPrefixes(List<String> prefixes) {
         Objects.requireNonNull(prefixes);
-        this.prefixes = DEFAULT_PREFIXES;
-        this.prefixes.addAll(prefixes);
+        this.prefixes = new ArrayList<>(prefixes);
+        this.prefixes.addAll(DEFAULT_PREFIXES);
         return this;
     }
 
@@ -211,8 +214,8 @@ public final class HumanNameParserBuilder {
 
     public HumanNameParserBuilder withExtraSuffixes(List<String> suffixes) {
         Objects.requireNonNull(suffixes);
-        this.suffixes = DEFAULT_SUFFIXES;
-        this.suffixes.addAll(suffixes);
+        this.suffixes = new ArrayList<>(suffixes);
+        this.suffixes.addAll(DEFAULT_SUFFIXES);
         return this;
     }
 }

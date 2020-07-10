@@ -62,4 +62,4 @@ users can tell the builder to replace or append values to these lists.
 
 ### 0.1 (2020-04-06)
 
-Initial release to Maven Central
+- Initial release to Maven Central

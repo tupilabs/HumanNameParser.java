@@ -8,7 +8,7 @@
 Java port Author: Bruno P. Kinoshita
 
 Original library Author: Jason Priem jason@jasonpriem.com (credits go to him)
-Original library Author Website: http://jasonpriem.com/human-name-parse
+Original library Author Website: https://github.com/jasonpriem/HumanNameParser.php
 
 License: [MIT](http://www.opensource.org/licenses/mit-license.php)
 

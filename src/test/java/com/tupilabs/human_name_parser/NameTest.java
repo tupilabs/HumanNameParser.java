@@ -23,10 +23,10 @@
  */
 package com.tupilabs.human_name_parser;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@code Name} and {@code HumanNameParserParser}. Utilizes the same
@@ -38,7 +38,7 @@ public class NameTest {
 
     protected Name object;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         object = new Name("Bjorn O'Malley");
     }

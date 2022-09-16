@@ -23,13 +23,14 @@
  */
 package com.tupilabs.human_name_parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the {@code HumanNameParserBuilder}.
@@ -142,54 +143,54 @@ public class BuilderTest {
 
     // validations
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testConstructorFailsWithNullString() {
-        new HumanNameParserBuilder((String) null);
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder((String) null));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testConstructorFailsWithNullName() {
-        new HumanNameParserBuilder((Name) null);
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder((Name) null));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullSalutations1() {
-        new HumanNameParserBuilder("john paul").withSalutations(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withSalutations(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullSalutations2() {
-        new HumanNameParserBuilder("john paul").withExtraSalutations(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withExtraSalutations(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullPostnominals1() {
-        new HumanNameParserBuilder("john paul").withPostnominals(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withPostnominals(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullPostnominals2() {
-        new HumanNameParserBuilder("john paul").withExtraPostnominals(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withExtraPostnominals(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullSuffixes1() {
-        new HumanNameParserBuilder("john paul").withSuffixes(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withSuffixes(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullSuffixes2() {
-        new HumanNameParserBuilder("john paul").withExtraSuffixes(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withExtraSuffixes(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullPrefixes1() {
-        new HumanNameParserBuilder("john paul").withPrefixes(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withPrefixes(null).build());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testFailsToBuildWithNullPrefixes2() {
-        new HumanNameParserBuilder("john paul").withExtraPrefixes(null).build();
+        assertThrows(NullPointerException.class, () -> new HumanNameParserBuilder("john paul").withExtraPrefixes(null).build());
     }
 
     @Test

@@ -23,7 +23,7 @@
  */
 package com.tupilabs.human_name_parser;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -32,8 +32,8 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class ParserTest {
 
@@ -41,7 +41,7 @@ public class ParserTest {
 
     private static File testNames = null;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         testNames = new File(ParserTest.class.getResource("/testNames.txt").getFile());
     }

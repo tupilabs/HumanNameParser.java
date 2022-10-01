@@ -54,7 +54,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-		<junit.version>4.13.1</junit.version>
+		<junit.version>5.9.1</junit.version>
 		<commons.lang.version>2.6</commons.lang.version>
 		<jacoco.version>0.8.5</jacoco.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
@@ -123,6 +123,11 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
 			<!-- Coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -145,7 +150,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<reporting>
         <plugins>
             <plugin>
@@ -211,8 +216,8 @@
 		</dependency>
 		<!-- testing -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>

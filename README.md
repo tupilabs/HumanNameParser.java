@@ -53,6 +53,10 @@ String nicknames = parser.getNicknames();
 
 ## Changelog
 
+### 0.3 (20??-??-??)
+
+- [#15](https://github.com/tupilabs/HumanNameParser.java/pull/15) JUnit Jupiter migration (thanks to @mureinik).
+
 ### 0.2 (2020-07-09)
 
 - [#10](https://github.com/tupilabs/HumanNameParser.java/issues/10) support custom

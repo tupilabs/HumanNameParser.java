@@ -26,7 +26,7 @@ package com.tupilabs.human_name_parser;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p>A parser capable of parsing name parts out of a single string.</p>

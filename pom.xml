@@ -55,7 +55,7 @@
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 		<junit.version>4.12</junit.version>
-		<commons.lang.version>2.6</commons.lang.version>
+		<commons.lang.version>3.12.0</commons.lang.version>
 	</properties>
 
 	<developers>
@@ -179,8 +179,8 @@
 	<dependencies>
 		<!-- [lang] -->
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 			<version>${commons.lang.version}</version>
 		</dependency>
 		<!-- testing -->

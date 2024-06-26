@@ -139,11 +139,11 @@ public class HumanNameParserParser {
         // The regex use is a bit tricky.  *Everything* matched by the regex will be replaced,
         // but you can select a particular parenthesized submatch to be returned.
         // Also, note that each regex requres that the preceding ones have been run, and matches chopped out.
-        String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
-        String suffixRegex = "(?i),* *(("+suffixes+")$)";
-        String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
-        String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
-        String firstRegex = "(?i)^([^ ]+)";
+        String nicknamesRegex = "(?U)(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
+        String suffixRegex = "(?U)(?i),* *(("+suffixes+")$)";
+        String lastRegex = "(?U)(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
+        String leadingInitRegex = "(?U)(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
+        String firstRegex = "(?U)(?i)^([^ ]+)";
         
         // get nickname, if there is one
         this.nicknames = this.name.chopWithRegex(nicknamesRegex, 2);

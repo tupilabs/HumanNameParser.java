@@ -141,6 +141,14 @@ public class BuilderTest {
         assertTrue(parser.salutations.contains("sinho"));
     }
 
+    @Test
+    public void testLastNameNotMistakenForPostnominal() {
+        HumanNameParserBuilder builder = new HumanNameParserBuilder("ruvin phidd");
+        HumanNameParserParser parser = builder.build();
+        assertTrue(parser.getFirst().contains("ruvin"));
+        assertTrue(parser.getLast().contains("phidd"));
+    }
+
     // validations
 
     @Test

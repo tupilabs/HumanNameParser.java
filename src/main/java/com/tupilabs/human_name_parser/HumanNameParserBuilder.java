@@ -137,16 +137,16 @@ public final class HumanNameParserBuilder {
      */
     public HumanNameParserParser build() {
         if (this.salutations == null) {
-            this.salutations = DEFAULT_SALUTATIONS;
+            this.salutations = formatToRegex(DEFAULT_SALUTATIONS);
         }
         if (this.postnominals == null) {
-            this.postnominals = DEFAULT_POSTNOMINALS;
+            this.postnominals = formatToRegex(DEFAULT_POSTNOMINALS);
         }
         if (this.prefixes == null) {
-            this.prefixes = DEFAULT_PREFIXES;
+            this.prefixes = formatToRegex(DEFAULT_PREFIXES);
         }
         if (this.suffixes == null) {
-            this.suffixes = DEFAULT_SUFFIXES;
+            this.suffixes = formatToRegex(DEFAULT_SUFFIXES);
         }
         final HumanNameParserParser parser = new HumanNameParserParser(
             name,
@@ -157,6 +157,14 @@ public final class HumanNameParserBuilder {
         );
         parser.parse();
         return parser;
+    }
+
+    private List<String> formatToRegex(List<String> list) {
+        List<String> regexList = new ArrayList<>();
+        for (String s : list) {
+            regexList.add(s.replace(".", "\\."));
+        }
+        return regexList;
     }
 
     // salutations

@@ -43,7 +43,7 @@ and parses out the:
 ```
 
 ```
-Name name = new Name("Sérgio Vieira de Mello");
+Name name = new Name("SÃ©rgio Vieira de Mello");
 HumanNameParserBuilder builder = new HumanNameParserBuilder(name);
 HumanNameParserParser parser = builder.build();
 String firstName = parser.getFirst();
@@ -56,6 +56,7 @@ String nicknames = parser.getNicknames();
 ### 0.3 (20??-??-??)
 
 - [#15](https://github.com/tupilabs/HumanNameParser.java/pull/15) JUnit Jupiter migration (thanks to @mureinik).
+- [#17](https://github.com/tupilabs/HumanNameParser.java/pull/17) Fix for HumanNameParser incorrectly interprets some name components as postnominals (thanks to @CarlosManuelRodr).
 
 ### 0.2 (2020-07-09)
 

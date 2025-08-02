@@ -53,7 +53,7 @@ String nicknames = parser.getNicknames();
 
 ## Changelog
 
-### 0.3 (20??-??-??)
+### 0.3 (2025-08-02)
 
 - [#15](https://github.com/tupilabs/HumanNameParser.java/pull/15) JUnit Jupiter migration (thanks to @mureinik).
 - [#17](https://github.com/tupilabs/HumanNameParser.java/pull/17) Fix for HumanNameParser incorrectly interprets some name components as postnominals (thanks to @CarlosManuelRodr).

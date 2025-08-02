@@ -35,14 +35,14 @@
 	<inceptionYear>2015</inceptionYear>
 
 	<organization>
-		<url>http://www.tupilabs.com</url>
+		<url>https://www.tupilabs.com</url>
 		<name>TupiLabs</name>
 	</organization>
 
 	<licenses>
 		<license>
 			<name>MIT license (also X11)</name>
-			<url>http://www.spdx.org/licenses/MIT</url>
+			<url>https://www.spdx.org/licenses/MIT</url>
 		</license>
 	</licenses>
 
@@ -68,8 +68,8 @@
 			<email>kinow@apache.org</email>
 			<id>kinow</id>
 			<name>Bruno P. Kinoshita</name>
-			<timezone>-3</timezone>
-			<url>http://www.kinoshita.eti.br</url>
+			<timezone>+1</timezone>
+			<url>https://www.kinoshita.eti.br</url>
 			<roles>
 				<role>developer</role>
 			</roles>

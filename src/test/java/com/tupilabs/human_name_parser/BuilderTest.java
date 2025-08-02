@@ -23,14 +23,14 @@
  */
 package com.tupilabs.human_name_parser;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the {@code HumanNameParserBuilder}.
@@ -52,7 +52,7 @@ public class BuilderTest {
     @Test
     public void testReplacingSuffixes() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withSuffixes(Arrays.asList("mage")).build();
+        HumanNameParserParser parser = builder.withSuffixes(Collections.singletonList("mage")).build();
         assertFalse(parser.suffixes.contains("senior"));
         assertTrue(parser.suffixes.contains("mage"));
     }
@@ -60,7 +60,7 @@ public class BuilderTest {
     @Test
     public void testExtraSuffixes() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withExtraSuffixes(Arrays.asList("mage")).build();
+        HumanNameParserParser parser = builder.withExtraSuffixes(Collections.singletonList("mage")).build();
         assertTrue(parser.suffixes.contains("senior"));
         assertTrue(parser.suffixes.contains("mage"));
     }
@@ -77,7 +77,7 @@ public class BuilderTest {
     @Test
     public void testReplacingPrefixes() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withPrefixes(Arrays.asList("sama")).build();
+        HumanNameParserParser parser = builder.withPrefixes(Collections.singletonList("sama")).build();
         assertFalse(parser.prefixes.contains("de la"));
         assertTrue(parser.prefixes.contains("sama"));
     }
@@ -85,7 +85,7 @@ public class BuilderTest {
     @Test
     public void testExtraPrefixes() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withExtraPrefixes(Arrays.asList("sama")).build();
+        HumanNameParserParser parser = builder.withExtraPrefixes(Collections.singletonList("sama")).build();
         assertTrue(parser.prefixes.contains("de la"));
         assertTrue(parser.prefixes.contains("sama"));
     }
@@ -103,7 +103,7 @@ public class BuilderTest {
     public void testReplacingPostnominals() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
         // Au.D. is one of the examples from issue #10 on GitHub
-        HumanNameParserParser parser = builder.withPostnominals(Arrays.asList("Au.D.")).build();
+        HumanNameParserParser parser = builder.withPostnominals(Collections.singletonList("Au.D.")).build();
         assertFalse(parser.postnominals.contains("phd"));
         assertTrue(parser.postnominals.contains("Au.D."));
     }
@@ -111,7 +111,7 @@ public class BuilderTest {
     @Test
     public void testExtraPostnominals() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withExtraPostnominals(Arrays.asList("Au.D.")).build();
+        HumanNameParserParser parser = builder.withExtraPostnominals(Collections.singletonList("Au.D.")).build();
         assertTrue(parser.postnominals.contains("phd"));
         assertTrue(parser.postnominals.contains("Au.D."));
     }
@@ -128,7 +128,7 @@ public class BuilderTest {
     @Test
     public void testReplacingSalutations() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withSalutations(Arrays.asList("sinho")).build();
+        HumanNameParserParser parser = builder.withSalutations(Collections.singletonList("sinho")).build();
         assertFalse(parser.salutations.contains("judge"));
         assertTrue(parser.salutations.contains("sinho"));
     }
@@ -136,7 +136,7 @@ public class BuilderTest {
     @Test
     public void testExtraSalutations() {
         HumanNameParserBuilder builder = new HumanNameParserBuilder("john paul");
-        HumanNameParserParser parser = builder.withExtraSalutations(Arrays.asList("sinho")).build();
+        HumanNameParserParser parser = builder.withExtraSalutations(Collections.singletonList("sinho")).build();
         assertTrue(parser.salutations.contains("judge"));
         assertTrue(parser.salutations.contains("sinho"));
     }
@@ -203,7 +203,7 @@ public class BuilderTest {
 
     @Test
     public void testCreateWithStringOrName() {
-        assertEquals("ramon", new HumanNameParserBuilder("don ramon valdez").withSalutations(Arrays.asList("don")).build().getFirst());
-        assertEquals("ramon", new HumanNameParserBuilder(new Name("don ramon valdez")).withSalutations(Arrays.asList("don")).build().getFirst());
+        assertEquals("ramon", new HumanNameParserBuilder("don ramon valdez").withSalutations(Collections.singletonList("don")).build().getFirst());
+        assertEquals("ramon", new HumanNameParserBuilder(new Name("don ramon valdez")).withSalutations(Collections.singletonList("don")).build().getFirst());
     }
 }

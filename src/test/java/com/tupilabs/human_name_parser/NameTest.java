@@ -23,10 +23,10 @@
  */
 package com.tupilabs.human_name_parser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for {@code Name} and {@code HumanNameParserParser}. Utilizes the same

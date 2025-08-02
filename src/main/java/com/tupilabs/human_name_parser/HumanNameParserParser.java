@@ -23,9 +23,9 @@
  */
 package com.tupilabs.human_name_parser;
 
-import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
-import org.apache.commons.lang.StringUtils;
+import java.util.List;
 
 /**
  * <p>

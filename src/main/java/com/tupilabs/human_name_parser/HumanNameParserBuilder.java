@@ -105,7 +105,7 @@ public final class HumanNameParserBuilder {
                     "junior"));
 
     // build values
-    private Name name;
+    private final Name name;
     private List<String> salutations;
     private List<String> postnominals;
     private List<String> prefixes;

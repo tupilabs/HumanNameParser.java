@@ -81,7 +81,7 @@ public class Name {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(this.str);
 
-        // workdaround for numReplacements in Java
+        // workaround for numReplacements in Java
         int numReplacements = 0;
         while (matcher.find()) {
             numReplacements++;
